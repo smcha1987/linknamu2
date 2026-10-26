@@ -1,4 +1,4 @@
-import { lguBoraPopup, type PopupContent } from "./popup";
+import type { PopupContent } from "./popup";
 
 export type Profile = {
   name: string;
@@ -18,14 +18,9 @@ export const profile: Profile = {
 };
 
 export const links: LinkItem[] = [
-  {
-    id: "lgu-bora",
-    kind: "popup",
-    title: "지연이의 LG U+ 통신확인 요청",
-    popup: lguBoraPopup,
-  },
-  { id: "blog", kind: "link", title: "블로그", url: "https://velog.io" },
-  { id: "email", kind: "link", title: "이메일", url: "mailto:hello@example.com" },
+  { id: "github", kind: "link", title: "🐙 깃허브", url: "https://github.com/your-id" },
+  { id: "blog", kind: "link", title: "✍️ 블로그", url: "https://your-blog.com" },
+  { id: "email", kind: "link", title: "📬 이메일", url: "mailto:you@example.com" },
 ];
 
 export function isLinkId(id: unknown): id is string {

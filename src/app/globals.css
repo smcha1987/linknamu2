@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fdf8f1;
+  --foreground: #2b2420;
+  --muted: #8c7b6f;
+  --accent: #c8744a;
+  --bg-from: #fdf8f1;
+  --bg-to: #fbe2d0;
+  --blob-1: rgba(255, 196, 160, 0.45);
+  --blob-2: rgba(255, 214, 222, 0.5);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-pretendard), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1c1714;
+    --foreground: #f3ece5;
+    --muted: #a8988c;
+    --accent: #e39a72;
+    --bg-from: #1c1714;
+    --bg-to: #2a1f19;
+    --blob-1: rgba(200, 116, 74, 0.18);
+    --blob-2: rgba(190, 110, 130, 0.12);
   }
 }
 
+html {
+  background-color: var(--background);
+}
+
+/* 글래스 카드 뒤로 비쳐 보이도록 그라데이션 위에 흐릿한 원형 빛을 겹침 */
 body {
-  background: var(--background);
+  min-height: 100dvh;
+  background:
+    radial-gradient(40rem 30rem at 85% 10%, var(--blob-1), transparent 70%),
+    radial-gradient(36rem 28rem at 10% 75%, var(--blob-2), transparent 70%),
+    linear-gradient(160deg, var(--bg-from), var(--bg-to));
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }

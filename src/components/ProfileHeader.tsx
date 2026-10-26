@@ -10,10 +10,10 @@ export default function ProfileHeader({ profile }: { profile: Profile }) {
         width={144}
         height={144}
         priority
-        className="h-36 w-36 rounded-full border border-black/10 object-cover dark:border-white/15"
+        className="h-28 w-28 rounded-full object-cover shadow-[0_14px_32px_-14px_rgba(120,70,40,0.5)] ring-4 ring-white/70 sm:h-32 sm:w-32 dark:ring-white/10"
       />
-      <h1 className="mt-5 text-2xl font-bold">{profile.name}</h1>
-      <p className="mt-1 text-base text-gray-500 dark:text-gray-400">
+      <h1 className="mt-6 text-2xl font-semibold tracking-tight">{profile.name}</h1>
+      <p className="mt-2 max-w-xs break-keep text-[15px] leading-relaxed text-muted">
         {profile.bio}
       </p>
     </header>
