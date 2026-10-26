@@ -2,15 +2,18 @@
 
 import { useState } from "react";
 import type { LinkItem } from "@/data/profile";
-import { trackClick } from "@/lib/trackClick";
-import { cardClassName } from "./LinkCard";
+import { ClickCount, cardClassName } from "./LinkCard";
 import Modal from "./Modal";
 import PopupBody from "./PopupBody";
 
 export default function PopupCard({
   link,
+  count,
+  onClick,
 }: {
   link: Extract<LinkItem, { kind: "popup" }>;
+  count: number;
+  onClick: () => void;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -20,12 +23,13 @@ export default function PopupCard({
         type="button"
         aria-haspopup="dialog"
         onClick={() => {
-          trackClick(link.id);
+          onClick();
           setOpen(true);
         }}
         className={`${cardClassName} cursor-pointer`}
       >
         {link.title}
+        <ClickCount count={count} />
       </button>
       <Modal open={open} onClose={() => setOpen(false)} title={link.popup.title}>
         <PopupBody content={link.popup} />

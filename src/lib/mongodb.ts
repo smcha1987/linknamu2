@@ -20,7 +20,15 @@ function getClient(): Promise<MongoClient> {
   return globalForMongo._mongoClientPromise;
 }
 
+// linknamu-cluster를 기존 linknamu 프로젝트와 공유하므로 linknamu2 DB만 사용
+const DB_NAME = "linknamu2";
+
 export async function getDb(): Promise<Db> {
+  // 기존 프로젝트의 환경 변수를 그대로 복사한 경우 등 잘못된 설정을 차단
+  const configured = process.env.MONGODB_DB;
+  if (configured && configured !== DB_NAME) {
+    throw new Error(`MONGODB_DB must be "${DB_NAME}" (got "${configured}")`);
+  }
   const client = await getClient();
-  return client.db(process.env.MONGODB_DB ?? "linknamu");
+  return client.db(DB_NAME);
 }
